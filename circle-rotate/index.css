@@ -1,0 +1,180 @@
+*{
+  /* 初始化 */
+  margin: 0;
+  padding: 0;
+}
+body{
+  /* 100%窗口高度 */
+  height: 100vh;
+  /* 弹性布局 水平+垂直居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  /* 自定义属性，--s为太阳的颜色，--e为地球的颜色，--m为月球的颜色，可通过var函数对其调用 */
+  --s: #f39c12;
+  --e: #3498db;
+  --m: #1abc9c;
+  --t: #e74c3c;
+  --d: #caae50;
+  --j: #9b59b6;
+  --a: #a1c40f;
+  --f: #f99aaa;
+}
+/* 太阳 */
+.sun{
+  /* 绝对定位 */
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  /* 通过var函数调用自定义属性--s，设置太阳的颜色 */
+  /* background-color: var(--m); */
+  /* 通过设置阴影，实现发光的效果 */
+  /* box-shadow: 0 0 10px var(--m),
+  0 0 20px var(--m),
+  0 0 30px var(--m),
+  0 0 40px var(--m); */
+  /* 执行动画：动画名 时长 线性的 无限次播放 */
+  animation: rotate 36.5s linear infinite;
+}
+/* 太阳外圈（地球轨道） */
+.sun::after{
+  content: "";
+  width: 330px;
+  height: 330px;
+  /* 绝对定位 居中 */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border: 1px solid #fff;
+  border-radius: 50%;
+  z-index: -1;
+}
+/* 地球 */
+.earth{
+  position: absolute;
+  left: 200px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--e);
+  box-shadow: 0 0 10px var(--e),
+  0 0 20px var(--e),
+  0 0 30px var(--e),
+  0 0 40px var(--e);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  transition: 0.5s;
+  /* 执行动画：动画名 时长 线性的 无限次播放 */
+  /* animation: rotate 3s linear infinite; */
+}
+.earth:hover {
+  transform: scale(1.5);
+}
+/* 地球外圈（月球轨道） */
+.earth::after{
+  content: "";
+  width: 84px;
+  height: 84px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border: 1px solid gray;
+  border-radius: 50%;
+}
+/* 月球 */
+/* .moon{
+  position: absolute;
+  left: 50px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--m);
+  box-shadow: 0 0 5px var(--m),
+  0 0 10px var(--m),
+  0 0 20px var(--m);
+} */
+.top {
+  top: 170px;
+  left: 150px;
+  background-color: var(--t);
+  /* 通过设置阴影，实现发光的效果 */
+  box-shadow: 0 0 10px var(--t),
+  0 0 20px var(--t),
+  0 0 30px var(--t),
+  0 0 40px var(--t);
+}
+.jug {
+  top: 170px;
+  left: -60px;
+  background-color: var(--d);
+  /* 通过设置阴影，实现发光的效果 */
+  box-shadow: 0 0 10px var(--d),
+  0 0 20px var(--d),
+  0 0 30px var(--d),
+  0 0 40px var(--d);
+}
+.middle {
+  top: 0px;
+  left: -125px;
+  background-color: var(--j);
+  /* 通过设置阴影，实现发光的效果 */
+  box-shadow: 0 0 10px var(--j),
+  0 0 20px var(--j),
+  0 0 30px var(--j),
+  0 0 40px var(--j);
+}
+.ad {
+  top: -125px;
+  left: 40px;
+  background-color: var(--a);
+  /* 通过设置阴影，实现发光的效果 */
+  box-shadow: 0 0 10px var(--a),
+  0 0 20px var(--a),
+  0 0 30px var(--a),
+  0 0 40px var(--a);
+}
+/* 定义动画 */
+@keyframes rotate {
+  to{
+      transform: rotateZ(360deg);
+  }
+}
+.center {
+  color: #fff;
+  text-shadow: -10px -10px 10px #f99aaa,
+  10px 10px 10px #f99aaa,
+  -10px 10px 10px #f99aaa,
+  10px -10px 10px #f99aaa;
+  z-index: 9;
+  font-size: 2rem;
+  animation: text 2s linear paused;
+  animation-iteration-count: infinite;
+}
+
+@keyframes text {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

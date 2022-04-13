@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body id="app">
+  <span class="center" ref="center">{{ name }}</span>
+  <div class="sun" @mouseenter.native="onMouseEnter" @mouseleave.native="onMouseLeave">
+    <div class="earth">
+      <span class="title">辅助</span>
+      <div class="moon"></div>
+    </div>
+    <div class="earth top">
+      <span class="title">上单</span>
+      <div class="moon"></div>
+    </div>
+    <div class="earth jug">
+      <span class="title">打野</span>
+      <div class="moon"></div>
+    </div>
+    <div class="earth middle" @click="getRes(middleArr)">
+      <span class="title">中单</span>
+      <div class="moon"></div>
+    </div>
+    <div class="earth ad">
+      <span class="title">AD</span>
+      <div class="moon"></div>
+    </div>
+  </div>
+
+  <script>
+    const { createApp, ref, reactive } = Vue;
+    const app = createApp({
+      setup() {
+        const name = ref('');
+        const center = ref(null);
+        const middleArr = reactive(['卡特', '吸血鬼', '狐狸', '发条']);
+        const getRes = (arr) => {
+          name.value = '';
+          const random = Math.floor(Math.random() * arr.length);
+          name.value = arr[random];
+          center.value.style.animationPlayState = 'running';
+        }
+        const onMouseEnter = (e) => {
+          const target = e.target;
+          target.style.animationPlayState = 'paused';
+        }
+        const onMouseLeave = (e) => {
+          const target = e.target;
+          target.style.animationPlayState = 'running';
+        }
+        return {
+          name,
+          center,
+          middleArr,
+          getRes,
+          onMouseEnter,
+          onMouseLeave
+        }
+      }
+    });
+    app.mount('#app');
+  </script>
+</body>
+</html>
