@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #clipped {
+      width: 100px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      color: #fff;
+      font-size: 0.875rem;
+      background: linear-gradient(to bottom, #fff,#24aef8, cyan);
+      margin-bottom: 20px;
+      clip-path: polygon(0% 15%, 15% 15%, 21% 21%, 80% 21%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 79% 80%, 21% 80%, 15% 85%, 0% 85%);
+    }
+    .before {
+      position: absolute;
+      top: 7px;
+      left: 24px;
+      width: 50px;
+      height: 2px;
+      background-color: #00bdc7
+    }
+    .after {
+      position: absolute;
+      bottom: 7px;
+      left: 24px;
+      width: 50px;
+      height: 2px;
+      background-color: #00bdc7
+    }
+
+  </style>
+</head>
+<body>
+  <div style="position: relative">
+    <span class="before"></span>
+    <div id="clipped">设备信息</div>
+    <span class="after"></span>
+  </div>
+</body>
+</html>
